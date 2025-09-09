@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
     float verticalInput;
 
     Vector3 moveDirection;
-    Rigidbody rb;
+    public Rigidbody rb;
     //rotation variables
     public float sensX;
     public float sensY;
