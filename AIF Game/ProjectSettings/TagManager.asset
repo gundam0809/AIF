@@ -4,15 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
+  - Seaweed
+  - Net
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Seaweed
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

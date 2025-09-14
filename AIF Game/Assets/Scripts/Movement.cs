@@ -1,137 +1,67 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed;
-
-    public float groundDrag;
-
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
-    public bool readyToJump = true;
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-    [Header("Ground Check")]
-    public float playerHieght;
-    public LayerMask Ground;
-    public bool grounded = true;
-    public Transform orientation;
-    float horizontatInput;
-    float verticalInput;
-
-    Vector3 moveDirection;
+    [SerializeField] float moveSpeed;
+    public float speed = 3f;
+    public float turnSpeed = 0.5f;
     public Rigidbody rb;
-    //rotation variables
-    public float sensX;
-    public float sensY;
+    public float currentYRotation;
+    Vector3 currentRotation;
+    public float horizontatInput;
+    public Transform orientation;
+    Vector3 moveDirection;
+    public LayerMask seaweed;
+    public bool reward = true;
 
-    float xRotation;
-    float yRotation;
-    // Start is called before the first frame update
-    void Start()
+    public GameManager gameManager;
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
     }
-    private void Update()
+    // Update is called once per frame
+    void Update()
+    {
+        movement();
+    }
+
+    void movement()
     {
 
-        //ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHieght * 0.5f + 0.2f, Ground);
-        MyInput();
-        SpeedControl();
-        // handle drag
-        if (grounded)
+        
+            if (Input.GetAxisRaw("Horizontal") != 0)
+            {
+                horizontatInput = Input.GetAxisRaw("Horizontal");
+                moveDirection = orientation.forward * horizontatInput;
+                rb.AddForce(moveDirection.normalized * moveSpeed * -5, ForceMode.Force);
+
+                //clamp the velocity
+
+                Debug.Log("Crabs games are good");
+            }
+        
+            if (Input.GetKeyDown(KeyCode.W)) {
+            
+                transform.Rotate(0, 5 * turnSpeed, 0);
+            }
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            rb.drag = groundDrag;
-        }
-        else
+                transform.Rotate(0, -5 * turnSpeed, 0);
+            }
+        
+    }
+    public void OnCollison(Collider other)
+    {
+        if (other.CompareTag("Seaweed"))
         {
-            rb.drag = 0;
+            Debug.Log("Unicorn gundam is better then 00");
+            gameManager.AddScore();
         }
-        //player rotation with mouse
-        // get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
-
-        yRotation += mouseX;
-
-        xRotation += mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        // rotate cam and orientation
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-    }
-    private void FixedUpdate()
-    {
-        MovePlayer();
-    }
-    private void MyInput()
-    {
-        horizontatInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
-        // when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded == true)
+        if (other.CompareTag("Net"))
         {
-            readyToJump = false;
-
-            Jump();
-            StartCoroutine(resetJump());
-
-            jumpCooldown = 2;
-            Console.WriteLine("jump");
+            
         }
-    }
-    private void MovePlayer()
-    {
-        //calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontatInput;
-        // on ground
-        if (grounded)
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10, ForceMode.Force);
-        }
-
-        // in air
-        else if (!grounded)
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-        }
-    }
-
-    private void SpeedControl()
-    {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        // limit velocity if needed
-        //if we go faster then our movement speed
-        if (flatVel.magnitude > moveSpeed)
-        {
-            //calculate what the max velocity is then apply it.
-            Vector3 limitVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitVel.x, rb.velocity.y, limitVel.z);
-        }
-    }
-    private void Jump()
-    {
-        //reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 1f, rb.velocity.z);
-
-        //add force
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-    }
-    private IEnumerator resetJump()
-    {
-        yield return new WaitForSeconds(jumpCooldown);
-
-        Debug.Log("Hmm whatthe sigma?");
-        readyToJump = true;
-
     }
 }
-
