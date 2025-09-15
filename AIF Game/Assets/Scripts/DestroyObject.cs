@@ -16,12 +16,12 @@ public class DestroyObject : MonoBehaviour
     {
 
     }
-    public void OnCollision(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Gundam 00 is better the unicorn ong");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
