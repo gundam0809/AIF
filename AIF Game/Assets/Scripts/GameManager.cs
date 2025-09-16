@@ -7,7 +7,9 @@ using UnityEngine.SocialPlatforms.Impl;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI greentext;
-    public float score = 0;
+    public TextMeshProUGUI purpletext;
+    public float green = 0;
+    public float purple = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +19,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        greentext.text = ("Green: " + score);
+        greentext.text = ("Green: " + green);
+        purpletext.text = ("Purple: " + purple);
     }
-    public void AddScore()
+    public void AddGreen()
     {
-        score = score + 1;
+        green = green + 1;
     }
 }
