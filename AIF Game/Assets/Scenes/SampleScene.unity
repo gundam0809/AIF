@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86242909ebf0bee4a8b9322f88243f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greentext: {fileID: 0}
   score: 0
 --- !u!1001 &639817842
 PrefabInstance:
@@ -1599,7 +1600,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 909183829}
   - {fileID: 1068568033}
-  - {fileID: 580434526}
   - {fileID: 147239699}
   - {fileID: 1462831512}
   - {fileID: 639817842}
@@ -1607,3 +1607,4 @@ SceneRoots:
   - {fileID: 342371475}
   - {fileID: 1368560805}
   - {fileID: 1665359384}
+  - {fileID: 580434526}
