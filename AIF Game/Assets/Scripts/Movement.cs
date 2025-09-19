@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour
         if (other.CompareTag("Seaweed"))
         {
             Debug.Log("Unicorn gundam is better then 00");
-            gameManager.AddScore();
+            gameManager.AddGreen();
         }
         if (other.CompareTag("Net"))
         {

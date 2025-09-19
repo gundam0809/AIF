@@ -19,7 +19,7 @@ public class Turtle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerFront = Physics.Raycast(transform.position, Vector3.forward, 5, layerMask);
+        playerFront = Physics.Raycast(transform.position, Vector3.back, 10, layerMask);
         if (playerFront = true && Input.GetKeyDown(KeyCode.Space))
         {
             Quest();
