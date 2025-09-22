@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     public float speed = 3f;
-    public float turnSpeed = 0.5f;
+    public float turnSpeed = 1f;
     public Rigidbody rb;
     public float currentYRotation;
     Vector3 currentRotation;
@@ -52,5 +52,18 @@ public class Movement : MonoBehaviour
             }
         
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Green"))
+        {
+            Debug.Log("Unicorn gundam is better then 00");
+            gameManager.AddGreen();
+            Debug.Log("Mr Knight");
+        }
+        if (collision.gameObject.CompareTag("Net"))
+        {
 
+        }
+
+    }
 }
