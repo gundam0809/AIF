@@ -52,16 +52,5 @@ public class Movement : MonoBehaviour
             }
         
     }
-    public void OnCollison(Collider other)
-    {
-        if (other.CompareTag("Seaweed"))
-        {
-            Debug.Log("Unicorn gundam is better then 00");
-            gameManager.AddGreen();
-        }
-        if (other.CompareTag("Net"))
-        {
-            
-        }
-    }
+
 }

@@ -19,11 +19,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        greentext.text = ("Green: " + green);
-        purpletext.text = ("Purple: " + purple);
+        greentext.text = ("Green: " + green.ToString());
+        purpletext.text = ("Purple: " + purple.ToString());
     }
     public void AddGreen()
     {
         green = green + 1;
+        Debug.Log(green);
     }
 }

@@ -449,8 +449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86242909ebf0bee4a8b9322f88243f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  greentext: {fileID: 0}
-  purpletext: {fileID: 0}
+  greentext: {fileID: 82762742}
+  purpletext: {fileID: 2020087464}
   green: 0
   purple: 0
 --- !u!1001 &639817842
@@ -1036,6 +1036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1097158430}
+  - component: {fileID: 1097158431}
   m_Layer: 0
   m_Name: GreenSeaweed
   m_TagString: Untagged
@@ -1059,6 +1060,18 @@ Transform:
   - {fileID: 126088210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1097158431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097158429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf87ebea349513458a43bc956a7c24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1368560801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,11 +1416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1758957098791090, guid: 067326f3b1753409b8ca2f61176c9986, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1758957098791090, guid: 067326f3b1753409b8ca2f61176c9986, type: 3}
       propertyPath: m_TagString
-      value: Seaweed
+      value: Green
       objectReference: {fileID: 0}
     - target: {fileID: 4348569969984482, guid: 067326f3b1753409b8ca2f61176c9986, type: 3}
       propertyPath: m_LocalPosition.x
